@@ -3,7 +3,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
-from huggingface_hub import snapshot_download,  login
+from huggingface_hub import login
 import os
 
 # --- Global Layout Fix ---
@@ -39,8 +39,7 @@ def load_data():
 @st.cache_resource
 def load_model():
     login(token=os.environ["HF_TOKEN"])
-    model_path = snapshot_download("SpencerCreveling99/fine-tuned-minilm-wine")
-    return SentenceTransformer(model_path)
+    return SentenceTransformer("SpencerCreveling99/fine-tuned-minilm-wine")
 
 model = load_model()
 wine_df = load_data()
