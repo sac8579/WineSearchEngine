@@ -1,6 +1,6 @@
 streamlit>=1.30.0
 sentence-transformers==4.0.1
-transformers==4.39.3
+transformers>=5.0.0
 huggingface-hub==0.22.2
 torch>=2.1.0
 datasets>=2.16.0
