@@ -4,7 +4,8 @@ import torch
 from sentence_transformers import SentenceTransformer, util
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
-from huggingface_hub import snapshot_download
+from huggingface_hub import snapshot_download,  login
+import os
 
 # --- Global Layout Fix ---
 st.markdown(
@@ -38,6 +39,7 @@ def load_data():
 # --- Load model ---
 @st.cache_resource
 def load_model():
+    login(token=os.environ["HF_TOKEN"])
     model_path = snapshot_download("SpencerCreveling99/fine-tuned-minilm-wine")
     return SentenceTransformer(model_path)
 
