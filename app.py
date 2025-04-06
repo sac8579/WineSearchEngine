@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import torch
 from sentence_transformers import SentenceTransformer, util
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
