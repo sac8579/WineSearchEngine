@@ -24,12 +24,9 @@ st.markdown(
 # --- Load dataset from KaggleHub ---
 @st.cache_data
 def load_data():
-    file_path = "winemag-data_first150k.csv"
-    df = kagglehub.load_dataset(
-        KaggleDatasetAdapter.PANDAS,
-        "zynicide/wine-reviews",
-        file_path,
-    )
+    path = kagglehub.dataset_download("christopheiv/winemagdata130k")
+    df = pd.read_csv(f"{path}/winemag-data-130k-v2.csv", low_memory=False)
+
     df = df.dropna(subset=["description"])
     df = df.fillna("")
     df = df.drop_duplicates(subset=["description"]).reset_index(drop=True)
